@@ -1,0 +1,15 @@
+services:
+  erigon:
+    image: erigontech/erigon:latest
+    container_name: erigon-mainnet
+    restart: unless-stopped
+    ports:
+      - "8545:8545"   
+      - "8546:8546"   
+      - "8551:8551"   
+      - "30303:30303" 
+      - "30303:30303/udp"
+    volumes:
+      - ./data:/home/erigon
+      - ./start-erigon.sh:/start-erigon.sh
+    entrypoint: ["bash", "/start-erigon.sh"]
